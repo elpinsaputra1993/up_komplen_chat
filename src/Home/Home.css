@@ -1,0 +1,46 @@
+header {
+  position: relative;
+  height: 70vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+header .container {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(83, 81, 81);
+  opacity: 0.5;
+  z-index: 1;
+}
+.row {
+  background-image: ("image/gamabar1.png");
+  background-repeat: no-repeat;
+  padding-left: 28px !important;
+  background-size: 10%;
+  background-position-y: 1%;
+
+ 
+}
+
+section{
+  text-align: center;
+  margin :50px;
+  font-size: medium;
+  
+}
+
+
+
+
