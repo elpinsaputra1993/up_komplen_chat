@@ -7,6 +7,7 @@ import moment from "moment";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import Chatbox from "../components/Chatbox";
 
 const images = [];
 // const images = [
@@ -78,29 +79,30 @@ class DetailPelapor extends Component {
     const { photoIndex, isOpen } = this.state;
     return (
       <div>
-        <div class="container-fluid">
-          <div class="card mx-auto ">
-            <div class="card-header">
+        <div className="container-fluid">
+          <div className="card mx-auto ">
+            <div className="card-header">
               <h3>Informasi Lengkap dari : {this.state.user.name}</h3>
               {/* <h3>Informasi Lengkap Pelapor {this.props.match.params.idx}</h3> */}
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <div className="row">
                 <div className="col">
                   {/* <h2>Hello</h2> */}
-                  <h3 class="card-title">{this.state.user.topic}</h3>
-                  <p class="card-text">{this.state.user.info}</p>
-                  <a href="#" class="card-link">
+                  <h3 className="card-title">{this.state.user.topic}</h3>
+                  <p className="card-text">{this.state.user.location}</p>
+                  <a href="#" className="card-link">
                     {this.state.user.phone}
                   </a>
-                  <a href="#" class="card-link">
+                  <a href="#" className="card-link">
                     {this.state.user.email}
                   </a>
                   <br />
                   <br />
+                  <p className="card-text">{this.state.user.info}</p>
                   <a
                     href="#"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     onClick={() => {
                       //   this.images = [];
                       this.setState({ isOpen: true });
@@ -109,7 +111,7 @@ class DetailPelapor extends Component {
                     Bukti gambar
                   </a>
                   <hr />
-                  <footer class="blockquote-footer">
+                  <footer className="blockquote-footer">
                     Waktu pelaporan/pengaduan;&nbsp;&nbsp;
                     {/* {this.state.user.datetime} */}
                     {moment(this.state.user.datetime)
@@ -175,6 +177,7 @@ class DetailPelapor extends Component {
             }
           />
         )}
+        <Chatbox />
       </div>
     );
   }

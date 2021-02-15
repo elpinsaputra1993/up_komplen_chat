@@ -5,6 +5,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
+import Chatbox from "../components/Chatbox";
 
 class InformasiData extends Component {
   constructor(props) {
@@ -30,6 +31,13 @@ class InformasiData extends Component {
   }
 
   render() {
+    const usersToRender = this.state.users.filter((user) => user.name);
+    const numRows = usersToRender.length;
+    const isEmpty = !usersToRender.length;
+    console.log(usersToRender);
+    console.log(numRows);
+    console.log(isEmpty);
+
     return (
       <div className="container">
         {/* <Button variant="primary" onClick={handleShow}>
@@ -39,32 +47,46 @@ class InformasiData extends Component {
         <h2>Informasi Data Pelapor</h2>
 
         <table id="t01">
-          <tr>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>Laporan</th>
-            {/* <th>Tindaklanjut</th> */}
-          </tr>
-
-          {this.state.users.map((user, index) => {
-            if (index > -1) {
-              // skip the first element since it's already used above
-              return (
-                <tr key={index.toString()}>
-                  <td>
-                    {/* <Link to={`/data_pelapor/${user._id}`}>{user.name}</Link> */}
-                    <Nav.Link href={`/data_pelapor/${user._id}`}>
-                      {user.name}
-                    </Nav.Link>
-                  </td>
-                  <td>{user.email}</td>
-                  <td>{user.topic}</td>
-                  {/* <td>{</td> */}
-                </tr>
-              );
-            }
-          })}
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Nama</th>
+              <th>Email</th>
+              <th>Laporan</th>
+              {/* <th>Tindaklanjut</th> */}
+            </tr>
+          </thead>
+          <tbody>
+            {isEmpty ? (
+              <tr>
+                <td colSpan="3" style={{ textAlign: "center" }}>
+                  Data belum ada
+                </td>
+              </tr>
+            ) : (
+              this.state.users.map((user, index) => {
+                if (index > -1) {
+                  // skip the first element since it's already used above
+                  return (
+                    <tr key={index.toString()}>
+                      <td>{`${++index}.`}</td>
+                      <td>
+                        {/* <Link to={`/data_pelapor/${user._id}`}>{user.name}</Link> */}
+                        <Nav.Link href={`/data_pelapor/${user._id}`}>
+                          {user.name}
+                        </Nav.Link>
+                      </td>
+                      <td>{user.email}</td>
+                      <td>{user.topic}</td>
+                      {/* <td>{</td> */}
+                    </tr>
+                  );
+                }
+              })
+            )}
+          </tbody>
         </table>
+        <Chatbox />
       </div>
     );
   }
